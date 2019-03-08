@@ -1,0 +1,19 @@
+var dbPerson = require('../models/person')
+
+var findPerson = (req, res) => {
+    dbPerson.find({ createdBy: req.decoded.email }, (err, data) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: "Please try again after some time"
+            })
+        } else {
+            res.json({
+                success: true,
+                msg: "All data",
+                data: data
+            })
+        }
+    })
+}
+module.exports = findPerson

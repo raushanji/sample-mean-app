@@ -1,0 +1,45 @@
+<div class="row w-100 h-100" style="display: flex; flex-direction: center; align-items: center">
+
+  <div class="card col-5 m-auto">
+
+    <div class="card-body">
+
+      <h1 class="text-center my-4" style="font-weight: 300">
+        Edit User
+      </h1>
+
+      <form [formGroup]="editForm">
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Age</label>
+          <input type="number" formControlName="age" class="form-control" id="formGroupExampleInput" placeholder="age">
+        </div>
+        <div *ngIf="editForm.get('age').touched && editForm.get('age').invalid" class="alert alert-warning" role="alert">
+          <strong>Warning!</strong> {{ getDynamicErrors('age') }}
+        </div>
+
+
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Pincode</label>
+          <input type="number" formControlName="pincode" class="form-control" id="formGroupExampleInput2"
+            placeholder="Pincode">
+        </div>
+        <div *ngIf="editForm.get('pincode').touched && editForm.get('pincode').invalid" class="alert alert-warning"
+          role="alert">
+          <strong>Warning!</strong> {{ getDynamicErrors('password') }}
+        </div>
+
+
+      </form>
+
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-dark" [disabled]="editForm.pristine || editForm.invalid" (click)="updateUser()">
+        Update Values
+      </button>
+    </div>
+
+  </div>
+
+</div>
